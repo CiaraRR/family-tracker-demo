@@ -1,0 +1,289 @@
+:root {
+  --blue: #2f7dff;
+  --panel: rgba(18, 18, 21, 0.96);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #05080c;
+  font-family: Arial, sans-serif;
+  touch-action: none;
+}
+
+body {
+  width: 100vw;
+  height: 100dvh;
+}
+
+.phone {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #05080c;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #08111c;
+  touch-action: none;
+}
+
+.map-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: 0 0;
+  will-change: transform;
+  cursor: grab;
+}
+
+.screen:active .map-container {
+  cursor: grabbing;
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.88) contrast(1.08);
+  user-select: none;
+  pointer-events: none;
+}
+
+.route-layer {
+  position: absolute;
+  left: 73px;
+  top: 246px;
+  width: 220px;
+  height: 220px;
+  overflow: visible;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#route {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 6px rgba(47, 125, 255, 0.45));
+  opacity: 0.98;
+}
+
+.pin {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--blue);
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px rgba(47, 125, 255, 0.45),
+    0 0 28px rgba(47, 125, 255, 0.28);
+  z-index: 60;
+  pointer-events: none;
+  will-change: left, top, transform;
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: rgba(47, 125, 255, 0.18);
+  animation: pulse 2.6s infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 132px;
+  background: var(--panel);
+  color: white;
+  z-index: 40;
+  overflow: hidden;
+  backdrop-filter: blur(18px);
+}
+
+.status-row {
+  height: 34px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav-row {
+  height: 98px;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.nav-row p {
+  margin: 6px 0 0;
+  text-align: center;
+  color: #9ca0aa;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.back,
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  height: 50px;
+}
+
+.zoom-controls {
+  position: absolute;
+  right: 18px;
+  top: 150px;
+  z-index: 65;
+  display: grid;
+  gap: 10px;
+}
+
+.zoom-controls button {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.96);
+  color: #111;
+  font-size: 24px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.zoom-controls button:active {
+  transform: scale(0.94);
+}
+
+.action-card {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 104px;
+  min-height: 104px;
+  padding: 18px;
+  border: 0;
+  border-radius: 24px;
+  background: rgba(22,22,25,0.96);
+  color: white;
+  z-index: 70;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  cursor: pointer;
+  backdrop-filter: blur(18px);
+}
+
+.action-card:active {
+  transform: scale(0.985);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(47,125,255,0.2);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.card-copy strong,
+.card-copy span,
+.card-copy small {
+  display: block;
+}
+
+.card-copy strong {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.card-copy span {
+  font-size: 15px;
+  color: #e2e2e6;
+}
+
+.card-copy small {
+  margin-top: 8px;
+  color: #8f929d;
+  font-size: 13px;
+}
+
+.bottom-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 86px;
+  background: rgba(22,22,25,0.98);
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  color: #8f929d;
+  backdrop-filter: blur(18px);
+}
+
+.bottom-nav div {
+  text-align: center;
+  font-size: 24px;
+}
+
+.bottom-nav span {
+  display: block;
+  font-size: 13px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+.bottom-nav .active {
+  color: var(--blue);
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1115" />
+  <title>Tracker Phone Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="phone" aria-label="Samsung Galaxy S20 Plus prototype">
+  <div class="screen">
+    <div class="map-container" id="mapContainer">
+      <img src="map.png" class="map" alt="Local map" draggable="false" />
+
+      <svg class="route-layer" viewBox="0 0 247.05 241.64" preserveAspectRatio="none" aria-hidden="true">
+        <path id="route" d="M34.79,89.55l-4.74-4.06c-3.81-3.27-4.38-8.95-1.28-12.9l9.14-11.65c3.03-3.86,2.57-9.4-1.06-12.71L4.77,18.96C.71,15.25.39,8.96,4.06,4.86h0C7.87.6,14.47.36,18.58,4.33l110.91,107.23,168.54,162 250,242 330,315 430,410" />
+      </svg>
+    </div>
+
+    <div class="pin" aria-hidden="true"></div>
+    <div class="zoom-feather" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="status-row">
+        <span id="clock">9:41</span>
+        <span>5G ◯ ▰</span>
+      </div>
+
+      <div class="nav-row">
+        <span class="back">‹</span>
+        <div>
+          <p>Freya</p>
+        </div>
+        <span class="settings">⚙</span>
+      </div>
+    </header>
+
+    <div class="zoom-controls" aria-label="Map zoom controls">
+      <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+      <button id="recenter" type="button" aria-label="Recenter map">⌖</button>
+    </div>
+
+    <button class="action-card" id="actionButton" type="button" aria-label="Location details and tracking status">
+      <span class="card-icon">⌖</span>
+      <span class="card-copy">
+        <strong id="status">Current Location</strong>
+        <span id="subtitle">The Heights · Main Road</span>
+        <small id="hint">Live · Updated now · Accuracy 8 m</small>
+      </span>
+    </button>
+
+    <nav class="bottom-nav" aria-label="Prototype navigation">
+      <div class="active">⌖<span>Track</span></div>
+      <div>♙<span>Family</span></div>
+      <div>☰<span>More</span></div>
+    </nav>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
