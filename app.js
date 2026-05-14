@@ -69,15 +69,17 @@ function resetDemo() {
 function showHeights() {
   resetDemo();
 
-  gsap.to(pin, {
-    scale: 1.25,
-    duration: 0.7,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut"
-  });
-}
+gsap.to(".pin", {
+  duration: 36,
+  ease: "slow(0.25, 0.9, false)",
 
+  motionPath: {
+    path: "#route",
+    align: "#route",
+    alignOrigin: [0.5, 0.5]
+  }
+});
+}
 function movePin() {
   resetDemo();
 
@@ -86,12 +88,11 @@ function movePin() {
   document.getElementById("status").innerText = "Moving";
   document.getElementById("subtitle").innerText = "Tracking route";
 
-  gsap.to(route, {
-    strokeDashoffset: 0,
-    duration: 6,
-    ease: "power1.inOut"
-  });
-
+gsap.to("#route", {
+  strokeDashoffset: 0,
+  duration: 36,
+  ease: "slow(0.25, 0.9, false)"
+});
   gsap.to(tracker, {
     progress: 1,
     duration: 6,
@@ -112,3 +113,33 @@ function movePin() {
 window.addEventListener("resize", resetDemo);
 window.addEventListener("load", resetDemo);
 resetDemo();
+
+function zoomReservoir() {
+  gsap.to(".map-container", {
+    scale: 4.2,
+    x: -500,
+    y: -200,
+    duration: 2,
+    ease: "power2.inOut",
+    transformOrigin: "50% 50%"
+  });
+}
+
+function resetZoom() {
+  gsap.to(".map-container", {
+    scale: 1,
+    x: 0,
+    y: 0,
+    duration: 1.5,
+    ease: "power2.inOut"
+  });
+}
+
+gsap.to(".map-container", {
+  scale: 2.2,
+  x: -95,
+  y: -185,
+  duration: 2,
+  ease: "power2.inOut",
+  transformOrigin: "50% 50%"
+});
