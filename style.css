@@ -1,0 +1,303 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #1b2229;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.controls {
+  position: fixed;
+  top: 20px;
+  z-index: 100;
+}
+
+button {
+  padding: 10px 14px;
+  margin: 4px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.phone {
+  position: relative;
+  width: 390px;
+  height: 820px;
+  background: #05080c;
+  border-radius: 48px;
+  padding: 14px;
+  box-shadow:
+    0 0 0 2px #555,
+    0 0 0 6px #111,
+    0 20px 80px rgba(0,0,0,0.7);
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 90;
+  box-shadow: 0 0 0 2px #222;
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #08111c;
+}
+
+/* MAP */
+
+.map-container {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65) contrast(1.15);
+}
+
+/* ROUTE */
+
+.route-layer {
+  position: absolute;
+  left: 73px;
+  top: 233px;
+  width: 220px;
+  height: 220px;
+  overflow: visible;
+  z-index: 10;
+}
+
+#route {
+  fill: none;
+  stroke: #ff3030;
+  stroke-width: 0px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  filter: drop-shadow(0 0 8px #ff3030);
+}
+
+/* PIN */
+
+.pin {
+  position: absolute;
+  left: 210px;
+  top: 330px;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  background: #ff3030;
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow:
+    0 0 25px #ff3030,
+    0 0 55px #ff3030;
+  z-index: 60;
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: rgba(255, 48, 48, 0.3);
+  animation: pulse 2.3s infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* TOP BAR */
+
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 132px;
+  box-sizing: border-box;
+  background: rgba(18, 18, 21, 0.96);
+  color: white;
+  z-index: 40;
+  border-radius: 38px 38px 0 0;
+  overflow: hidden;
+}
+
+.status-row {
+  height: 34px;
+  padding: 0 28px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav-row {
+  height: 98px;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.nav-row h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 26px;
+  line-height: 1.05;
+}
+
+.nav-row p {
+  margin: 6px 0 0;
+  text-align: center;
+  color: #9ca0aa;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.back,
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  height: 50px;
+}
+
+.back {
+  justify-self: start;
+}
+
+.settings {
+  justify-self: end;
+}
+
+/* HIDE OLD UI */
+
+.person-card,
+.location-label {
+  display: none;
+}
+
+/* BOTTOM CARD */
+
+.bottom-card {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 104px;
+  box-sizing: border-box;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(22, 22, 25, 0.96);
+  color: white;
+  z-index: 40;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 48, 48, 0.28);
+  color: #ff3030;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.bottom-card strong {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.bottom-card span {
+  display: block;
+  font-size: 15px;
+  color: #e2e2e6;
+}
+
+.bottom-card small {
+  display: block;
+  margin-top: 8px;
+  color: #8f929d;
+  font-size: 13px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 86px;
+  box-sizing: border-box;
+  background: rgba(22, 22, 25, 0.98);
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  color: #8f929d;
+  border-radius: 0 0 38px 38px;
+  overflow: hidden;
+}
+
+.bottom-nav div {
+  text-align: center;
+  font-size: 24px;
+}
+
+.bottom-nav span {
+  display: block;
+  font-size: 13px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+.bottom-nav .active {
+  color: #2f7dff;
+}

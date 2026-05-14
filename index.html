@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tracker App Demo</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="controls">
+  <button onclick="showHeights()">The Heights</button>
+  <button onclick="movePin()">Move to Reservoir</button>
+  <button onclick="resetDemo()">Reset</button>
+</div>
+
+<div class="phone">
+
+  <div class="screen">
+
+    <div class="map-container">
+
+      <img src="map.png" class="map" />
+
+      <svg class="route-layer"
+           viewBox="0 0 247.05 241.64"
+           preserveAspectRatio="none">
+
+        <path
+          id="route"
+       d="M34.79,89.55l-4.74-4.06c-3.81-3.27-4.38-8.95-1.28-12.9l9.14-11.65c3.03-3.86,2.57-9.4-1.06-12.71L4.77,18.96C.71,15.25.39,8.96,4.06,4.86h0C7.87.6,14.47.36,18.58,4.33l110.91,107.23,168.54,162"
+        />
+
+      </svg>
+ </div>
+      <div class="pin"></div>
+
+    </div>
+
+   <div class="topbar">
+  <div class="status-row">
+    <span>9:41</span>
+    <span>▭ ◯ ⚡</span>
+  </div>
+
+  <div class="nav-row">
+    <span class="back">‹</span>
+
+    <div>
+      <h1>Family Tracker</h1>
+      <p>Freya</p>
+    </div>
+
+    <span class="settings">⚙</span>
+  </div>
+</div>
+
+    <div class="person-card">
+      <strong>Freya</strong>
+      <span>Last updated: Now</span>
+    </div>
+
+    <div class="location-label" id="locationLabel">
+      The Heights<br>
+      <small>7 Dockside Row</small>
+    </div>
+
+<div class="bottom-card">
+  <div class="card-icon">⌖</div>
+
+  <div>
+    <strong id="status">Current Location</strong>
+    <span id="subtitle">7 Dockside Row, The Heights</span>
+    <small>Last updated: Just now</small>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <div class="active">⌖<span>Track</span></div>
+  <div>♙<span>Family</span></div>
+  <div>☰<span>More</span></div>
+</div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
